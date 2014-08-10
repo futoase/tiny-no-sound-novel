@@ -1,4 +1,10 @@
 // Tiny no sound novel
+var SE = (function() {
+  return {
+    pochi: new Audio("pochi.wav")
+  };
+})();
+
 var Novel = (function() {
   var stateIndex = 0
   ,   scene = []
@@ -26,6 +32,7 @@ var Novel = (function() {
       presentScene.dom.text(
         presentScene.dom.text() + presentScene.message.shift()
       );
+      SE.pochi.play();
 
       if (presentScene.message.length == 0) {
         presentScene.dom.text(
