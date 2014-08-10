@@ -1,8 +1,12 @@
 // Tiny no sound novel
 var SE = (function() {
-  return {
+  wave = {
     pochi: new Audio("pochi.wav")
   };
+
+  wave.pochi.volume = 0.1;
+
+  return wave;
 })();
 
 var Novel = (function() {
