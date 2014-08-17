@@ -19,12 +19,14 @@ var Novel = (function() {
   function setState() {
     scene = [];
     for(i = 0; i < state[stateIndex].length; i++) {
-      scene.push({ 
-        message: state[stateIndex][i].message.split(''),
-        count: state[stateIndex][i].message.length,
-        speed: state[stateIndex][i].speed * 10,
-        dom: $("<p>")
-      });
+      if (state[stateIndex][i].type == "message") {
+        scene.push({ 
+          message: state[stateIndex][i].message.split(''),
+          count: state[stateIndex][i].message.length,
+          speed: state[stateIndex][i].speed * 10,
+          dom: $("<p>")
+        });
+      }
     }
   };
 
