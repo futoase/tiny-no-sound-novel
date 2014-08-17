@@ -1,5 +1,9 @@
 var scenario = (function() {
   return {
+    init: {
+      type: "image",
+      url: "https://farm3.staticflickr.com/2903/14773533732_25c3735270_h.jpg"
+    },
     one: [
       {
         type: "message",
@@ -22,6 +26,10 @@ var scenario = (function() {
         type: "message",
         speed: 10,
         message: "「ちょっと待った」"
+      },
+      {
+        type: "image",
+        url: "https://farm6.staticflickr.com/5553/14717349929_7470dccdfa_h.jpg"
       },
       {
         type: "message",
@@ -51,6 +59,10 @@ var scenario = (function() {
         message: "逃げなければ。"
       },
       {
+        type: "image",
+        url: "https://farm6.staticflickr.com/5589/14837563893_130a966cd6_h.jpg"
+      },
+      {
         type: "message",
         speed: 5,
         message: "そう考えた俺は、見えない、何も見えない空間をひたすら走る続けることにした"
@@ -73,6 +85,10 @@ var scenario = (function() {
     ],
     four: [
       {
+        type: "image",
+        url: "https://farm6.staticflickr.com/5553/14716618639_1b54bd81a9_h.jpg"
+      },
+      {
         type: "message",
         speed: 5,
         message: "ひどく頭から鈍痛がする、何かにぶつけたのだろうか。痛い。"
@@ -81,6 +97,10 @@ var scenario = (function() {
         type: "message",
         speed: 20,
         message: "シャッ"
+      },
+      {
+        type: "image",
+        url: "https://farm4.staticflickr.com/3869/14741578433_acba040453_h.jpg"
       },
       {
         type: "message",

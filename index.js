@@ -10,21 +10,31 @@ var SE = (function() {
 })();
 
 var Novel = (function() {
-  var stateIndex = 0
-  ,   scene = []
-  ,   state = []
-  ,   presentScene
-  ,   semaphore = false;
+  var stateIndex = 0;
+  var scene = [];
+  var state = [];
+
+  var presentScene
+  ,   semaphore
+  ,   type;
 
   function setState() {
     scene = [];
+
     for(i = 0; i < state[stateIndex].length; i++) {
-      if (state[stateIndex][i].type == "message") {
+      currentState = state[stateIndex][i];
+      if (currentState.type == "message") {
         scene.push({ 
-          message: state[stateIndex][i].message.split(''),
-          count: state[stateIndex][i].message.length,
-          speed: state[stateIndex][i].speed * 10,
+          type: currentState.type,
+          message: currentState.message.split(''),
+          count: currentState.message.length,
+          speed: currentState.speed * 10,
           dom: $("<p>")
+        });
+      } else if (currentState.type == "image"){
+        scene.push({
+          type: currentState.type,
+          url: currentState.url
         });
       }
     }
@@ -33,7 +43,16 @@ var Novel = (function() {
   function appendScene() {
     $(".stage").append(presentScene.dom);
 
+    if (presentScene.type == "message") {
+      createMessageScene(presentScene);
+    } else if (presentScene.type == "image") {
+      changeImageScene(presentScene);
+    }
+  }
+
+  function createMessageScene(presentScene) {
     semaphore = true;
+
     intervalId = setInterval(function() {
       presentScene.dom.text(
         presentScene.dom.text() + presentScene.message.shift()
@@ -50,13 +69,22 @@ var Novel = (function() {
     }, presentScene.speed);
   }
 
+  function changeImageScene(presentScene) {
+    $(".stage").css('background-image', 'url(' + presentScene.url +  ')');
+  }
+
   function nextState() {
     $(".stage").empty();
     stateIndex++;
     setState();
   }
 
-  var init = function init() {
+  function initializeStage(sceneConfig) {
+    $(".stage").css('background-image', 'url(' + sceneConfig.url +  ')');
+  }
+
+  var init = function init(sceneConfig) {
+    initializeStage(sceneConfig);
     setState();
   }
 
@@ -91,6 +119,6 @@ $(function() {
   Novel.appendStage(scenario.two);
   Novel.appendStage(scenario.three);
   Novel.appendStage(scenario.four);
-  Novel.init();
+  Novel.init(scenario.init);
   Novel.play();
 });

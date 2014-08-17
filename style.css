@@ -4,6 +4,9 @@
   height: 600px;
   color: #fff;
   background-color: #000;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 p {
