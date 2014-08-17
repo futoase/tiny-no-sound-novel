@@ -29,7 +29,7 @@ var Novel = (function() {
           message: currentState.message.split(''),
           count: currentState.message.length,
           speed: currentState.speed * 10,
-          dom: $("<p>")
+          dom: $("<p class='message'>")
         });
       } else if (currentState.type == "image"){
         scene.push({

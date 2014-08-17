@@ -10,5 +10,12 @@
 }
 
 p {
-  line-height: 10px;
+  line-height: 30px;
+}
+
+p.message {
+  margin-top: 3px;
+  font-weight: bold;
+  font-size: 24px;
+  text-shadow: 2px 2px 0px #000;
 }
